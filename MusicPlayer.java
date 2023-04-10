@@ -4,22 +4,28 @@ public class MusicPlayer {
     private ArrayList<Song> songs;
 
     public MusicPlayer() {
-        songs = new ArrayList<Song>(); //initialize the list of songs
+        // Constructor for MusicPlayer, initializes the list of songs
+        songs = new ArrayList<Song>();
+    }
+
+    public void addSong(Song song) {
+        // Add a new song to the list
+        songs.add(song);
     }
 
     public void searchMusic(String searchTerm) {
-        //search for a song by title or artist 
+        // Search for a song by title or artist
         ArrayList<Song> results = new ArrayList<Song>();
         for (Song song : songs) {
             if (song.getTitle().toLowerCase().contains(searchTerm.toLowerCase()) ||
-                song.getArtist().toLowerCase().contains(searchTerm.toLowerCase())) {
-            results.add(song);
+                    song.getArtist().toLowerCase().contains(searchTerm.toLowerCase())) {
+                results.add(song);
             }
         }
 
-        //Display search results
+        // Display search results
         if (results.size() > 0) {
-            System.out.println("Search results: ");
+            System.out.println("Search results:");
             for (Song song : results) {
                 System.out.println(song.getTitle() + " by " + song.getArtist());
             }
@@ -28,7 +34,7 @@ public class MusicPlayer {
         }
     }
 
-    //Other methods
+    // Other methods and data structures for MusicPlayer go here
 }
 
 class Song {
