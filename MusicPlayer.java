@@ -3,11 +3,13 @@ import java.util.ArrayList;
 public class MusicPlayer {
     private ArrayList<Song> songs;
     private int currentSongIndex;
+    private boolean repeat;
 
     public MusicPlayer() {
         // Constructor for MusicPlayer, initializes the list of songs
         songs = new ArrayList<Song>();
         currentSongIndex = 0;
+        repeat = false;
     }
 
     public void addSong(Song song) {
@@ -58,7 +60,10 @@ public class MusicPlayer {
         System.out.println("Now playing: " + currentSong.getTitle() + " by " + currentSong.getArtist());
     }
 
-    //other methods
+    public void toggleRepeat() {
+        repeat = !repeat;
+        System.out.println("Repeat is now " + (repeat ? "on" : "off") + ".");
+    }
 }
 
 class Song {

@@ -1,14 +1,24 @@
 import java.util.Scanner;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.BufferedReader;
 
 public class Main {
     public static void main(String[] args) {
         MusicPlayer player = new MusicPlayer();
 
-        // Add some songs to the player
-        player.addSong(new Song("Really Really", "Kevin Gates"));
-        player.addSong(new Song("Thug Cry", "YoungBoy"));
-        player.addSong(new Song("My Side", "Lil Durk"));
-        player.addSong(new Song("Timing", "YK Osiris"));
+        //Loading song from songs.txt
+        try (BufferedReader br = new BufferedReader(new FileReader("songs.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] songData = line.split(",");
+                if (songData.length == 2) {
+                    player.addSong(new Song(songData[0].trim(), songData[1].trim()));
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the songs.txt file: " + e.getMessage());
+        }
 
         Scanner scanner = new Scanner(System.in);
 
@@ -22,7 +32,11 @@ public class Main {
                 System.out.print("Enter a search term: ");
                 String searchTerm = scanner.nextLine();
                 player.searchMusic(searchTerm);
-            } else if (input.equalsIgnoreCase("next")) {
+            } 
+            else if (input.equalsIgnoreCase("repeat")) {
+                player.toggleRepeat();
+            }
+            else if (input.equalsIgnoreCase("next")) {
                 player.nextSong();
             } else if (input.equalsIgnoreCase("previous")) {
                 player.previousSong();
