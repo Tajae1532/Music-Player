@@ -2,10 +2,12 @@ import java.util.ArrayList;
 
 public class MusicPlayer {
     private ArrayList<Song> songs;
+    private int currentSongIndex;
 
     public MusicPlayer() {
         // Constructor for MusicPlayer, initializes the list of songs
         songs = new ArrayList<Song>();
+        currentSongIndex = 0;
     }
 
     public void addSong(Song song) {
@@ -34,7 +36,29 @@ public class MusicPlayer {
         }
     }
 
-    // Other methods and data structures for MusicPlayer go here
+    public void nextSong() {
+        if (songs.isEmpty()) {
+            System.out.println("No songs in the player.");
+            return;
+        }
+
+        currentSongIndex = (currentSongIndex + 1) % songs.size();
+        Song currentSong = songs.get(currentSongIndex);
+        System.out.println("Now playing: " + currentSong.getTitle() + " by " + currentSong.getArtist());
+    }
+
+    public void previousSong() {
+        if (songs.isEmpty()) {
+            System.out.println("No songs in the player.");
+            return;
+        }
+
+        currentSongIndex = (currentSongIndex - 1 + songs.size()) % songs.size();
+        Song currentSong = songs.get(currentSongIndex);
+        System.out.println("Now playing: " + currentSong.getTitle() + " by " + currentSong.getArtist());
+    }
+
+    //other methods
 }
 
 class Song {

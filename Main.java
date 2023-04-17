@@ -5,10 +5,10 @@ public class Main {
         MusicPlayer player = new MusicPlayer();
 
         // Add some songs to the player
-        player.addSong(new Song("Bohemian Rhapsody", "Queen"));
-        player.addSong(new Song("Stairway to Heaven", "Led Zeppelin"));
-        player.addSong(new Song("Imagine", "John Lennon"));
-        player.addSong(new Song("Hotel California", "Eagles"));
+        player.addSong(new Song("Really Really", "Kevin Gates"));
+        player.addSong(new Song("Thug Cry", "YoungBoy"));
+        player.addSong(new Song("My Side", "Lil Durk"));
+        player.addSong(new Song("Timing", "YK Osiris"));
 
         Scanner scanner = new Scanner(System.in);
 
@@ -22,7 +22,12 @@ public class Main {
                 System.out.print("Enter a search term: ");
                 String searchTerm = scanner.nextLine();
                 player.searchMusic(searchTerm);
-            } else if (input.equalsIgnoreCase("exit")) {
+            } else if (input.equalsIgnoreCase("next")) {
+                player.nextSong();
+            } else if (input.equalsIgnoreCase("previous")) {
+                player.previousSong();
+            }             
+            else if (input.equalsIgnoreCase("exit")) {
                 // Exit the program
                 System.out.println("Goodbye!");
                 break;
