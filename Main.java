@@ -33,6 +33,9 @@ public class Main {
                 String searchTerm = scanner.nextLine();
                 player.searchMusic(searchTerm);
             } 
+            else if (input.equalsIgnoreCase("list")) {
+                player.listSongs();
+            }            
             else if (input.equalsIgnoreCase("repeat")) {
                 player.toggleRepeat();
             }

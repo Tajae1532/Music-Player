@@ -49,6 +49,18 @@ public class MusicPlayer {
         System.out.println("Now playing: " + currentSong.getTitle() + " by " + currentSong.getArtist());
     }
 
+    public void listSongs() {
+        if (songs.isEmpty()) {
+            System.out.println("No songs in the player.");
+            return;
+        }
+
+        System.out.println("List of songs: ");
+        for (Song song : songs) {
+            System.out.println(song.getTitle() + " by " + song.getArtist());
+        }
+    }
+
     public void previousSong() {
         if (songs.isEmpty()) {
             System.out.println("No songs in the player.");
