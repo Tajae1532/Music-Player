@@ -1,20 +1,59 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MusicPlayer {
     private ArrayList<Song> songs;
     private int currentSongIndex;
     private boolean repeat;
+    private Playlist playlist;
+    private HashMap<String, Lyric> lyrics;
 
     public MusicPlayer() {
         // Constructor for MusicPlayer, initializes the list of songs
         songs = new ArrayList<Song>();
         currentSongIndex = 0;
         repeat = false;
+        playlist = new Playlist();
+        lyrics = new HashMap<String, Lyric>();
+        loadLyrics();
     }
+    
+
+    public void loadLyrics()    {
+        try {
+            Lyric firstDayOut = new Lyric("First Day Out", "lyrics/firstdayout.txt");
+            lyrics.put(firstDayOut.getTitle(), firstDayOut);
+        } catch (Exception e)   {
+            System.err.println("Error loading they lyrics" + e.getMessage());
+        }
+    };
+
+    public void printLyrics(String songTitle)   {
+        Lyric songLyrics = lyrics.get(songTitle);
+        if (songLyrics != null) {
+            System.out.println("Lyrics for " + songLyrics.getTitle() + ": ");
+            songLyrics.printLyrics();
+        } else{
+            System.out.println("Lyrics not found for song: " + songTitle);
+        }
+    }
+
 
     public void addSong(Song song) {
         // Add a new song to the list
         songs.add(song);
+    }
+
+    public void addToPlaylist(Song song)    {
+        // Add a song to the playlist
+        songs.add(song);
+    }
+
+    public void playPlaylist()  {
+        // Play the songs in the playlist
+        for (Song song : playlist.getSongs())   {
+            System.out.println("Now playing: " + song.getTitle() + " by " + song.getArtist());
+        }
     }
 
     public void searchMusic(String searchTerm) {
