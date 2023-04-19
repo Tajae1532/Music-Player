@@ -23,6 +23,34 @@ public class MusicPlayer {
         try {
             Lyric firstDayOut = new Lyric("First Day Out", "lyrics/firstdayout.txt");
             lyrics.put(firstDayOut.getTitle(), firstDayOut);
+
+            Lyric flawsAndSin = new Lyric("Flaws and Sin", "lyrics/flawsandsin.txt");
+            lyrics.put(flawsAndSin.getTitle(), flawsAndSin);
+
+            Lyric freddyKrueger = new Lyric("Freddy Krueger", "lyrics/freddy.txt");
+            lyrics.put(freddyKrueger.getTitle(), freddyKrueger);
+
+            Lyric middleChild = new Lyric("Middle Child", "lyrics/middlechild.txt");
+            lyrics.put(middleChild.getTitle(), middleChild);
+
+            Lyric mySide = new Lyric("My Side", "lyrics/myside.txt");
+            lyrics.put(mySide.getTitle(), mySide);
+
+            Lyric reallyReally = new Lyric("Really Really", "lyrics/reallyreally.txt");
+            lyrics.put(reallyReally.getTitle(), reallyReally);
+
+            Lyric thugCry = new Lyric("Thug Cry", "lyrics/thugcry.txt");
+            lyrics.put(thugCry.getTitle(), thugCry);
+
+            Lyric timing = new Lyric("Timing", "lyrics/timing.txt");
+            lyrics.put(timing.getTitle(), timing);
+
+            Lyric toxicWaste = new Lyric("Toxic Waste", "lyrics/toxicwaste.txt");
+            lyrics.put(toxicWaste.getTitle(), toxicWaste);
+
+            Lyric two = new Lyric("Two", "lyrics/two.txt");
+            lyrics.put(two.getTitle(), two);
+
         } catch (Exception e)   {
             System.err.println("Error loading they lyrics" + e.getMessage());
         }
