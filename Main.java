@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 public class Main {
     public static void main(String[] args) {
         MusicPlayer player = new MusicPlayer();
+        Playlist playlist = new Playlist();
 
         //Loading song from songs.txt
         try (BufferedReader br = new BufferedReader(new FileReader("songs.txt"))) {
@@ -13,7 +14,9 @@ public class Main {
             while ((line = br.readLine()) != null) {
                 String[] songData = line.split(",");
                 if (songData.length == 2) {
-                    player.addSong(new Song(songData[0].trim(), songData[1].trim()));
+                    Song song = new Song(songData[0].trim(), songData[1].trim());
+                    player.addSong(song);
+                    playlist.addSong(song);
                 }
             }
         } catch (IOException e) {
@@ -43,6 +46,20 @@ public class Main {
                 player.nextSong();
             } else if (input.equalsIgnoreCase("previous")) {
                 player.previousSong();
+            } else if (input.equalsIgnoreCase("playlist: "))    {
+                System.out.println("Current playlist: ");
+                for (Song song : playlist.getSongs())   {
+                    System.out.println(song.getTitle() + " by " + song.getArtist());
+                }
+            }
+            else if(input.equalsIgnoreCase("add"))  {
+                // Add a song to the playlist
+                System.out.print("Enter the song title: ");
+                String title = scanner.nextLine();
+                System.out.print("Enter the artist name: ");
+                String artist = scanner.nextLine();
+                Song song = new Song(title, artist);
+                System.out.println(song.getTitle() + "by " + song.getArtist() + "has been added to the playlist");
             }
             else if (input.equalsIgnoreCase("exit")) {
                 // Exit the program
@@ -54,6 +71,5 @@ public class Main {
             }
         }
     }
-    //this is a test
 }
 
