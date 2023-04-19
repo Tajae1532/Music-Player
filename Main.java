@@ -13,7 +13,7 @@ public class Main {
             while ((line = br.readLine()) != null) {
                 String[] songData = line.split(",");
                 if (songData.length == 2) {
-                    player.addSong(new Song(songData[0].trim(), songData[1].trim(), songData[2].trim()));
+                    player.addSong(new Song(songData[0].trim(), songData[1].trim()));
                 }
             }
         } catch (IOException e) {
