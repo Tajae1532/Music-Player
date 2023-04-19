@@ -13,7 +13,7 @@ public class Main {
             while ((line = br.readLine()) != null) {
                 String[] songData = line.split(",");
                 if (songData.length == 2) {
-                    player.addSong(new Song(songData[0].trim(), songData[1].trim()));
+                    player.addSong(new Song(songData[0].trim(), songData[1].trim(), songData[2].trim()));
                 }
             }
         } catch (IOException e) {
@@ -32,10 +32,10 @@ public class Main {
                 System.out.print("Enter a search term: ");
                 String searchTerm = scanner.nextLine();
                 player.searchMusic(searchTerm);
-            } 
+            }
             else if (input.equalsIgnoreCase("list")) {
                 player.listSongs();
-            }            
+            }
             else if (input.equalsIgnoreCase("repeat")) {
                 player.toggleRepeat();
             }
@@ -43,7 +43,7 @@ public class Main {
                 player.nextSong();
             } else if (input.equalsIgnoreCase("previous")) {
                 player.previousSong();
-            }             
+            }
             else if (input.equalsIgnoreCase("exit")) {
                 // Exit the program
                 System.out.println("Goodbye!");
@@ -55,3 +55,4 @@ public class Main {
         }
     }
 }
+

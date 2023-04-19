@@ -31,7 +31,7 @@ public class MusicPlayer {
         if (results.size() > 0) {
             System.out.println("Search results:");
             for (Song song : results) {
-                System.out.println(song.getTitle() + " by " + song.getArtist());
+                System.out.println(song.getTitle() + " by " + song.getArtist() + " , " + song.getDuration());
             }
         } else {
             System.out.println("No results found for \"" + searchTerm + "\"");
@@ -57,7 +57,7 @@ public class MusicPlayer {
 
         System.out.println("List of songs: ");
         for (Song song : songs) {
-            System.out.println(song.getTitle() + " by " + song.getArtist());
+            System.out.println(song.getTitle() + " by " + song.getArtist() + " ," + song.getDuration());
         }
     }
 
@@ -69,29 +69,11 @@ public class MusicPlayer {
 
         currentSongIndex = (currentSongIndex - 1 + songs.size()) % songs.size();
         Song currentSong = songs.get(currentSongIndex);
-        System.out.println("Now playing: " + currentSong.getTitle() + " by " + currentSong.getArtist());
+        System.out.println("Now playing: " + currentSong.getTitle() + " by " + currentSong.getArtist() + " ," + currentSong.getDuration());
     }
 
     public void toggleRepeat() {
         repeat = !repeat;
         System.out.println("Repeat is now " + (repeat ? "on" : "off") + ".");
-    }
-}
-
-class Song {
-    private String title;
-    private String artist;
-
-    public Song(String title, String artist) {
-        this.title = title;
-        this.artist = artist;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getArtist() {
-        return artist;
     }
 }
