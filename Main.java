@@ -23,7 +23,8 @@ public class Main {
             System.err.println("Error reading the songs.txt file: " + e.getMessage());
         }
 
-        Scanner scanner = new Scanner(System.in);
+        //Had to add try in font of the scanner since it saying it was never closed after adding the playlist line
+        try (Scanner scanner = new Scanner(System.in))  {
 
         while (true) {
             // Prompt the user for a command
@@ -46,7 +47,7 @@ public class Main {
                 player.nextSong();
             } else if (input.equalsIgnoreCase("previous")) {
                 player.previousSong();
-            } else if (input.equalsIgnoreCase("playlist: "))    {
+            } else if (input.equalsIgnoreCase("playlist"))    {
                 System.out.println("Current playlist: ");
                 for (Song song : playlist.getSongs())   {
                     System.out.println(song.getTitle() + " by " + song.getArtist());
@@ -59,7 +60,8 @@ public class Main {
                 System.out.print("Enter the artist name: ");
                 String artist = scanner.nextLine();
                 Song song = new Song(title, artist);
-                System.out.println(song.getTitle() + "by " + song.getArtist() + "has been added to the playlist");
+                playlist.addSong(song);
+                System.out.println(song.getTitle() + " by " + song.getArtist() + " has been added to the playlist");
             }
             else if (input.equalsIgnoreCase("exit")) {
                 // Exit the program
@@ -71,5 +73,9 @@ public class Main {
             }
         }
     }
+    catch (Exception e) {
+        System.err.println("Error: " + e.getMessage());
+    }
+}
 }
 
