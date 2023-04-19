@@ -31,7 +31,7 @@ public class MusicPlayer {
         if (results.size() > 0) {
             System.out.println("Search results:");
             for (Song song : results) {
-                System.out.println(song.getTitle() + " by " + song.getArtist() + " , " + song.getDuration());
+                System.out.println(song.getTitle() + " by " + song.getArtist());
             }
         } else {
             System.out.println("No results found for \"" + searchTerm + "\"");
@@ -57,7 +57,7 @@ public class MusicPlayer {
 
         System.out.println("List of songs: ");
         for (Song song : songs) {
-            System.out.println(song.getTitle() + " by " + song.getArtist() + " ," + song.getDuration());
+            System.out.println(song.getTitle() + " by " + song.getArtist());
         }
     }
 
@@ -69,7 +69,7 @@ public class MusicPlayer {
 
         currentSongIndex = (currentSongIndex - 1 + songs.size()) % songs.size();
         Song currentSong = songs.get(currentSongIndex);
-        System.out.println("Now playing: " + currentSong.getTitle() + " by " + currentSong.getArtist() + " ," + currentSong.getDuration());
+        System.out.println("Now playing: " + currentSong.getTitle() + " by " + currentSong.getArtist());
     }
 
     public void toggleRepeat() {
@@ -77,3 +77,4 @@ public class MusicPlayer {
         System.out.println("Repeat is now " + (repeat ? "on" : "off") + ".");
     }
 }
+
