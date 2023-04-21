@@ -47,22 +47,33 @@ public class Main {
                 player.nextSong();
             } else if (input.equalsIgnoreCase("previous")) {
                 player.previousSong();
-            } else if (input.equalsIgnoreCase("playlist"))    {
+            } else if (input.equalsIgnoreCase("playlist"))  {
                 System.out.println("Current playlist: ");
                 for (Song song : playlist.getSongs())   {
                     System.out.println(song.getTitle() + " by " + song.getArtist());
                 }
-            }
-            else if(input.equalsIgnoreCase("add"))  {
+            } else if (input.equalsIgnoreCase("add")) {
                 // Add a song to the playlist
+                    System.out.print("Enter the song title: ");
+                    String title = scanner.nextLine();
+                    System.out.print("Enter the artist name: ");
+                    String artist = scanner.nextLine();
+                    playlist.addSong(title, artist);
+                    System.out.println(title + " by " + artist + " has been added to the playlist");
+                } else if (input.equalsIgnoreCase("remove")) {
+                    System.out.print("Enter the song title: ");
+                    String title = scanner.nextLine();
+                    playlist.removeSong(title);
+            } /*else if (input.equalsIgnoreCase("lyrics")) {
                 System.out.print("Enter the song title: ");
                 String title = scanner.nextLine();
-                System.out.print("Enter the artist name: ");
-                String artist = scanner.nextLine();
-                Song song = new Song(title, artist);
-                playlist.addSong(song);
-                System.out.println(song.getTitle() + " by " + song.getArtist() + " has been added to the playlist");
-            }
+                String lyrics = player.getLyrics(title);
+                if (lyrics != null) {
+                    System.out.println(lyrics);
+                } else {
+                    System.out.println("Sorry, the lyrics for " + title + " could not be found.");
+                }
+            }*/
             else if (input.equalsIgnoreCase("exit")) {
                 // Exit the program
                 System.out.println("Goodbye!");

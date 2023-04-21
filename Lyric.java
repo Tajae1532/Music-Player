@@ -1,14 +1,17 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 public class Lyric {
     private String title;
     private String lyrics;
+    private List<Song> songs;
 
-    public Lyric(String title, String lyricFilePath)   {
+    public Lyric(String title, String lyricFilePath, List<Song> songs) {
         this.title = title;
         this.lyrics = readLyricsFromFile(lyricFilePath);
+        this.songs = songs;
     }
 
     public String getTitle()    {
@@ -32,5 +35,18 @@ public class Lyric {
             System.err.println("Error reading the lyrics: " + e.getMessage());
         }
         return lyricsBuilder.toString();
+    }
+
+    public String getLyrics(String title) {
+        for (Song song : songs) {
+            if (song.getTitle().equalsIgnoreCase(title)) {
+                // Create a new Lyric object with the title and the path to the lyrics file
+                Lyric lyric = new Lyric(title, "lyrics/" + title + ".txt");
+                // Return the lyrics as a String
+                return lyric.getLyrics();
+            }
+        }
+        // If the title was not found, return null
+        return null;
     }
 }

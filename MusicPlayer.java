@@ -15,46 +15,47 @@ public class MusicPlayer {
         repeat = false;
         playlist = new Playlist();
         lyrics = new HashMap<String, Lyric>();
-        loadLyrics();
+        //loadLyrics();
     }
     
 
-    public void loadLyrics()    {
+   /* public void loadLyrics() {
         try {
-            Lyric firstDayOut = new Lyric("First Day Out", "lyrics/firstdayout.txt");
-            lyrics.put(firstDayOut.getTitle(), firstDayOut);
-
-            Lyric flawsAndSin = new Lyric("Flaws and Sin", "lyrics/flawsandsin.txt");
-            lyrics.put(flawsAndSin.getTitle(), flawsAndSin);
-
-            Lyric freddyKrueger = new Lyric("Freddy Krueger", "lyrics/freddy.txt");
-            lyrics.put(freddyKrueger.getTitle(), freddyKrueger);
-
-            Lyric middleChild = new Lyric("Middle Child", "lyrics/middlechild.txt");
-            lyrics.put(middleChild.getTitle(), middleChild);
-
-            Lyric mySide = new Lyric("My Side", "lyrics/myside.txt");
-            lyrics.put(mySide.getTitle(), mySide);
-
-            Lyric reallyReally = new Lyric("Really Really", "lyrics/reallyreally.txt");
-            lyrics.put(reallyReally.getTitle(), reallyReally);
-
-            Lyric thugCry = new Lyric("Thug Cry", "lyrics/thugcry.txt");
-            lyrics.put(thugCry.getTitle(), thugCry);
-
-            Lyric timing = new Lyric("Timing", "lyrics/timing.txt");
-            lyrics.put(timing.getTitle(), timing);
-
-            Lyric toxicWaste = new Lyric("Toxic Waste", "lyrics/toxicwaste.txt");
-            lyrics.put(toxicWaste.getTitle(), toxicWaste);
-
-            Lyric two = new Lyric("Two", "lyrics/two.txt");
-            lyrics.put(two.getTitle(), two);
-
-        } catch (Exception e)   {
-            System.err.println("Error loading they lyrics" + e.getMessage());
+            Lyric firstDayOut = new Lyric("First Day Out", "lyrics/firstdayout.txt".toLowerCase());
+            lyrics.put(firstDayOut.getTitle().toLowerCase(), firstDayOut);
+    
+            Lyric flawsAndSin = new Lyric("Flaws and Sin", "lyrics/flawsandsin.txt".toLowerCase());
+            lyrics.put(flawsAndSin.getTitle().toLowerCase(), flawsAndSin);
+    
+            Lyric freddyKrueger = new Lyric("Freddy Krueger", "lyrics/freddy.txt".toLowerCase());
+            lyrics.put(freddyKrueger.getTitle().toLowerCase(), freddyKrueger);
+    
+            Lyric middleChild = new Lyric("Middle Child", "lyrics/middlechild.txt".toLowerCase());
+            lyrics.put(middleChild.getTitle().toLowerCase(), middleChild);
+    
+            Lyric mySide = new Lyric("My Side", "lyrics/myside.txt".toLowerCase());
+            lyrics.put(mySide.getTitle().toLowerCase(), mySide);
+    
+            Lyric reallyReally = new Lyric("Really Really", "lyrics/reallyreally.txt".toLowerCase());
+            lyrics.put(reallyReally.getTitle().toLowerCase(), reallyReally);
+    
+            Lyric thugCry = new Lyric("Thug Cry", "lyrics/thugcry.txt".toLowerCase());
+            lyrics.put(thugCry.getTitle().toLowerCase(), thugCry);
+    
+            Lyric timing = new Lyric("Timing", "lyrics/timing.txt".toLowerCase());
+            lyrics.put(timing.getTitle().toLowerCase(), timing);
+    
+            Lyric toxicWaste = new Lyric("Toxic Waste", "lyrics/toxicwaste.txt".toLowerCase());
+            lyrics.put(toxicWaste.getTitle().toLowerCase(), toxicWaste);
+    
+            Lyric two = new Lyric("Two", "lyrics/two.txt".toLowerCase());
+            lyrics.put(two.getTitle().toLowerCase(), two);
+    
+        } catch (Exception e) {
+            System.err.println("Error loading the lyrics: " + e.getMessage());
         }
-    };
+    }*/
+    
 
     public void printLyrics(String songTitle)   {
         Lyric songLyrics = lyrics.get(songTitle);
