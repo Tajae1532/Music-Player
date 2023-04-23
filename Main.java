@@ -23,6 +23,8 @@ public class Main {
             System.err.println("Error reading the songs.txt file: " + e.getMessage());
         }
 
+        System.out.println("Welcome to the Music Player");
+
         //Had to add try in font of the scanner since it saying it was never closed after adding the playlist line
         try (Scanner scanner = new Scanner(System.in))  {
 
@@ -64,7 +66,8 @@ public class Main {
                     System.out.print("Enter the song title: ");
                     String title = scanner.nextLine();
                     playlist.removeSong(title);
-            } /*else if (input.equalsIgnoreCase("lyrics")) {
+            // should show the lyrics when typing the title of the song
+            } else if (input.equalsIgnoreCase("lyrics")) {
                 System.out.print("Enter the song title: ");
                 String title = scanner.nextLine();
                 String lyrics = player.getLyrics(title);
@@ -73,7 +76,7 @@ public class Main {
                 } else {
                     System.out.println("Sorry, the lyrics for " + title + " could not be found.");
                 }
-            }*/
+            }
             else if (input.equalsIgnoreCase("exit")) {
                 // Exit the program
                 System.out.println("Goodbye!");

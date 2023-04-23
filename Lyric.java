@@ -8,10 +8,9 @@ public class Lyric {
     private String lyrics;
     private List<Song> songs;
 
-    public Lyric(String title, String lyricFilePath, List<Song> songs) {
+    public Lyric(String title, String lyricFilePath) {
         this.title = title;
         this.lyrics = readLyricsFromFile(lyricFilePath);
-        this.songs = songs;
     }
 
     public String getTitle()    {
@@ -43,7 +42,7 @@ public class Lyric {
                 // Create a new Lyric object with the title and the path to the lyrics file
                 Lyric lyric = new Lyric(title, "lyrics/" + title + ".txt");
                 // Return the lyrics as a String
-                return lyric.getLyrics();
+                return lyric.getLyrics(title);
             }
         }
         // If the title was not found, return null

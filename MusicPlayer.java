@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,45 +20,65 @@ public class MusicPlayer {
         lyrics = new HashMap<String, Lyric>();
         //loadLyrics();
     }
+
     
 
-   /* public void loadLyrics() {
+   public void loadLyrics() {
         try {
-            Lyric firstDayOut = new Lyric("First Day Out", "lyrics/firstdayout.txt".toLowerCase());
+            Lyric firstDayOut = new Lyric("First Day Out", "lyrics/firstdayout.txt");
             lyrics.put(firstDayOut.getTitle().toLowerCase(), firstDayOut);
-    
-            Lyric flawsAndSin = new Lyric("Flaws and Sin", "lyrics/flawsandsin.txt".toLowerCase());
+
+            Lyric flawsAndSin = new Lyric("Flaws and Sin", "lyrics/flawsandsin.txt");
             lyrics.put(flawsAndSin.getTitle().toLowerCase(), flawsAndSin);
-    
-            Lyric freddyKrueger = new Lyric("Freddy Krueger", "lyrics/freddy.txt".toLowerCase());
+
+            Lyric freddyKrueger = new Lyric("Freddy Krueger", "lyrics/freddy.txt");
             lyrics.put(freddyKrueger.getTitle().toLowerCase(), freddyKrueger);
-    
-            Lyric middleChild = new Lyric("Middle Child", "lyrics/middlechild.txt".toLowerCase());
+
+            Lyric middleChild = new Lyric("Middle Child", "lyrics/middlechild.txt");
             lyrics.put(middleChild.getTitle().toLowerCase(), middleChild);
-    
-            Lyric mySide = new Lyric("My Side", "lyrics/myside.txt".toLowerCase());
+
+            Lyric mySide = new Lyric("My Side", "lyrics/myside.txt");
             lyrics.put(mySide.getTitle().toLowerCase(), mySide);
-    
-            Lyric reallyReally = new Lyric("Really Really", "lyrics/reallyreally.txt".toLowerCase());
+
+            Lyric reallyReally = new Lyric("Really Really", "lyrics/reallyreally.txt");
             lyrics.put(reallyReally.getTitle().toLowerCase(), reallyReally);
-    
-            Lyric thugCry = new Lyric("Thug Cry", "lyrics/thugcry.txt".toLowerCase());
+
+            Lyric thugCry = new Lyric("Thug Cry", "lyrics/thugcry.txt");
             lyrics.put(thugCry.getTitle().toLowerCase(), thugCry);
-    
-            Lyric timing = new Lyric("Timing", "lyrics/timing.txt".toLowerCase());
+
+            Lyric timing = new Lyric("Timing", "lyrics/timing.txt");
             lyrics.put(timing.getTitle().toLowerCase(), timing);
-    
-            Lyric toxicWaste = new Lyric("Toxic Waste", "lyrics/toxicwaste.txt".toLowerCase());
+
+            Lyric toxicWaste = new Lyric("Toxic Waste", "lyrics/toxicwaste.txt");
             lyrics.put(toxicWaste.getTitle().toLowerCase(), toxicWaste);
-    
-            Lyric two = new Lyric("Two", "lyrics/two.txt".toLowerCase());
+
+            Lyric two = new Lyric("Two", "lyrics/two.txt");
             lyrics.put(two.getTitle().toLowerCase(), two);
     
         } catch (Exception e) {
-            System.err.println("Error loading the lyrics: " + e.getMessage());
+            System.err.println("Error loading the lyrics: ");
         }
-    }*/
+    }
     
+    public String getLyrics(String title) {
+        String lyricsFilePath = "lyrics/" + title.toLowerCase().replaceAll("\\s", "") + ".txt";
+        for (Song song : songs) {
+            if (song.getTitle().equalsIgnoreCase(title)) {
+                try (BufferedReader br = new BufferedReader(new FileReader(lyricsFilePath))) {
+                    StringBuilder lyricsBuilder = new StringBuilder();
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        lyricsBuilder.append(line);
+                        lyricsBuilder.append("\n");
+                    }
+                    return lyricsBuilder.toString();
+                } catch (IOException e) {
+                    System.err.println("Error reading the lyrics for " + title + ": " + e.getMessage());
+                }
+            }
+        }
+        return null;
+    }
 
     public void printLyrics(String songTitle)   {
         Lyric songLyrics = lyrics.get(songTitle);
@@ -75,7 +98,7 @@ public class MusicPlayer {
 
     public void addToPlaylist(Song song)    {
         // Add a song to the playlist
-        songs.add(song);
+        playlist.addSong(song);
     }
 
     public void playPlaylist()  {
